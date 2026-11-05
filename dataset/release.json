@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "release_tag": "dataset-v1.0.0",
+  "filename": "LeanContext-dataset-v1.0.0.zip",
+  "download_url": "https://github.com/haaaardcvZ/LeanContext/releases/download/dataset-v1.0.0/LeanContext-dataset-v1.0.0.zip",
+  "archive_bytes": 164139688,
+  "archive_sha256": "cc7fde0e0c018bbbff45015971ac41f5980e1563786bb08e63e59806570cbe78",
+  "packaged_files": 6836,
+  "uncompressed_bytes": 3060302821,
+  "records": 129826,
+  "split_counts": {
+    "train": 90879,
+    "validation": 19473,
+    "test": 19474
+  },
+  "views_per_record": 4,
+  "canonical_sha256": "0254d358216c19add0ce84c501222b8601aeee10da5f817cd0ad16b90d4c3b10"
+}

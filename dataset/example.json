@@ -1,0 +1,504 @@
+{
+  "sample_id": "cc1c0999b59e1d4f78e277ee",
+  "split": "test",
+  "proof_family": "Strict Term",
+  "statement": "theorem anonymous_target [Monoid R] [AddMonoid M] [DistribMulAction R M] [DistribMulAction Rᵐᵒᵖ M]\n    [SMulCommClass R Rᵐᵒᵖ M] (l : List (tsze R M)) : l.prod.fst = (l.map fst).prod :=",
+  "target": "map_list_prod ({ toFun := fst, map_one' := fst_one, map_mul' := fst_mul } : tsze R M →* R) _",
+  "mathematical_context": [
+    {
+      "position": 3,
+      "kind": "def",
+      "text": "def fst (x : tsze R M) : R :=\n  x.1",
+      "command_id": "cmd_000012",
+      "command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000012",
+      "source_order": 11,
+      "source_span": {
+        "start_byte": 3043,
+        "end_byte": 3137,
+        "start_line": 86,
+        "start_col": 0,
+        "end_line": 88,
+        "end_col": 5
+      },
+      "parser_kind": "def",
+      "effective_kind": "def"
+    }
+  ],
+  "environment_context": [
+    {
+      "position": 0,
+      "kind": "universe",
+      "text": "universe u v w",
+      "command_id": "cmd_000002",
+      "command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000002",
+      "source_order": 1,
+      "source_span": {
+        "start_byte": 2279,
+        "end_byte": 2293,
+        "start_line": 53,
+        "start_col": 0,
+        "end_line": 53,
+        "end_col": 14
+      },
+      "parser_kind": "universe",
+      "effective_kind": "universe"
+    },
+    {
+      "position": 1,
+      "kind": "local_notation",
+      "text": "local notation \"tsze\" => TrivSqZeroExt",
+      "command_id": "cmd_000004",
+      "command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000004",
+      "source_order": 3,
+      "source_span": {
+        "start_byte": 2669,
+        "end_byte": 2707,
+        "start_line": 66,
+        "start_col": 0,
+        "end_line": 66,
+        "end_col": 38
+      },
+      "parser_kind": "local_notation",
+      "effective_kind": "local_notation"
+    },
+    {
+      "position": 2,
+      "kind": "namespace",
+      "text": "namespace TrivSqZeroExt",
+      "command_id": "cmd_000006",
+      "command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000006",
+      "source_order": 5,
+      "source_span": {
+        "start_byte": 2735,
+        "end_byte": 2758,
+        "start_line": 70,
+        "start_col": 0,
+        "end_line": 70,
+        "end_col": 23
+      },
+      "parser_kind": "namespace",
+      "effective_kind": "namespace"
+    }
+  ],
+  "full_context": [
+    {
+      "position": 0,
+      "kind": "universe",
+      "text": "universe u v w",
+      "command_id": "cmd_000002",
+      "command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000002",
+      "source_order": 1,
+      "source_span": {
+        "start_byte": 2279,
+        "end_byte": 2293,
+        "start_line": 53,
+        "start_col": 0,
+        "end_line": 53,
+        "end_col": 14
+      },
+      "parser_kind": "universe",
+      "effective_kind": "universe"
+    },
+    {
+      "position": 1,
+      "kind": "local_notation",
+      "text": "local notation \"tsze\" => TrivSqZeroExt",
+      "command_id": "cmd_000004",
+      "command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000004",
+      "source_order": 3,
+      "source_span": {
+        "start_byte": 2669,
+        "end_byte": 2707,
+        "start_line": 66,
+        "start_col": 0,
+        "end_line": 66,
+        "end_col": 38
+      },
+      "parser_kind": "local_notation",
+      "effective_kind": "local_notation"
+    },
+    {
+      "position": 2,
+      "kind": "namespace",
+      "text": "namespace TrivSqZeroExt",
+      "command_id": "cmd_000006",
+      "command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000006",
+      "source_order": 5,
+      "source_span": {
+        "start_byte": 2735,
+        "end_byte": 2758,
+        "start_line": 70,
+        "start_col": 0,
+        "end_line": 70,
+        "end_col": 23
+      },
+      "parser_kind": "namespace",
+      "effective_kind": "namespace"
+    },
+    {
+      "position": 3,
+      "kind": "def",
+      "text": "def fst (x : tsze R M) : R :=\n  x.1",
+      "command_id": "cmd_000012",
+      "command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000012",
+      "source_order": 11,
+      "source_span": {
+        "start_byte": 3043,
+        "end_byte": 3137,
+        "start_line": 86,
+        "start_col": 0,
+        "end_line": 88,
+        "end_col": 5
+      },
+      "parser_kind": "def",
+      "effective_kind": "def"
+    }
+  ],
+  "target_id": "cc1c0999b59e1d4f78e277ee",
+  "target_command_id": "cmd_000145",
+  "target_command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000145",
+  "source_file": "Mathlib/Algebra/TrivSqZeroExt.lean",
+  "source_module": "Mathlib.Algebra.TrivSqZeroExt",
+  "target_kind": "theorem",
+  "original_name": "fst_list_prod",
+  "target_source_span": {
+    "start_byte": 22136,
+    "end_byte": 22426,
+    "start_line": 647,
+    "start_col": 0,
+    "end_line": 649,
+    "end_col": 94
+  },
+  "command_id": "cmd_000145",
+  "source_revision": {
+    "mathlib_release": "4.14.0-rc1",
+    "lean_toolchain": "leanprover/lean4:v4.14.0-rc1",
+    "recorded_mathlib_commit": "a7fc949f1b05c2a01e01c027fd9f480496a1253e",
+    "commit_claim_basis": "user_protocol_record; local Git history unavailable",
+    "source_file_sha256": "25d3dc2fb50211edf6544f4f99ee6e2b57a931dee68bee1518fcb70c7649b137"
+  },
+  "verification_location": {
+    "source_file": "Mathlib/Algebra/TrivSqZeroExt.lean",
+    "start_byte": 22136,
+    "end_byte": 22426,
+    "start_line": 647,
+    "start_col": 0,
+    "end_line": 649,
+    "end_col": 94
+  },
+  "context_selection_regime": "original_reference_assisted",
+  "verified_by_lean": true,
+  "lean_verification_basis": "user_confirmed_prior_Lean_verification_2026-10-13",
+  "lean_verification_scope": "reference_proof_in_complete_original_source_environment",
+  "views": {
+    "C0": {
+      "sample_id": "cc1c0999b59e1d4f78e277ee",
+      "target_id": "cc1c0999b59e1d4f78e277ee",
+      "split": "test",
+      "proof_family": "Strict Term",
+      "statement": "theorem anonymous_target [Monoid R] [AddMonoid M] [DistribMulAction R M] [DistribMulAction Rᵐᵒᵖ M]\n    [SMulCommClass R Rᵐᵒᵖ M] (l : List (tsze R M)) : l.prod.fst = (l.map fst).prod :=",
+      "command_id": "cmd_000145",
+      "target_command_id": "cmd_000145",
+      "target_command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000145",
+      "source_file": "Mathlib/Algebra/TrivSqZeroExt.lean",
+      "source_module": "Mathlib.Algebra.TrivSqZeroExt",
+      "target_kind": "theorem",
+      "original_name": "fst_list_prod",
+      "target_source_span": {
+        "start_byte": 22136,
+        "end_byte": 22426,
+        "start_line": 647,
+        "start_col": 0,
+        "end_line": 649,
+        "end_col": 94
+      },
+      "view": "C0",
+      "prompt": "theorem anonymous_target [Monoid R] [AddMonoid M] [DistribMulAction R M] [DistribMulAction Rᵐᵒᵖ M]\n    [SMulCommClass R Rᵐᵒᵖ M] (l : List (tsze R M)) : l.prod.fst = (l.map fst).prod :=\n",
+      "target": "map_list_prod ({ toFun := fst, map_one' := fst_one, map_mul' := fst_mul } : tsze R M →* R) _",
+      "context_items": [],
+      "context_ids": [],
+      "context_uids": [],
+      "template_version": "training_source_order_context_then_statement_one_newline_v1",
+      "tokenization_status": "raw_unbudgeted_view_see_tokenized_exports",
+      "verified_by_lean": true,
+      "lean_verification_basis": "user_confirmed_prior_Lean_verification_2026-10-13",
+      "lean_verification_scope": "reference_proof_in_complete_original_source_environment"
+    },
+    "CMath": {
+      "sample_id": "cc1c0999b59e1d4f78e277ee",
+      "target_id": "cc1c0999b59e1d4f78e277ee",
+      "split": "test",
+      "proof_family": "Strict Term",
+      "statement": "theorem anonymous_target [Monoid R] [AddMonoid M] [DistribMulAction R M] [DistribMulAction Rᵐᵒᵖ M]\n    [SMulCommClass R Rᵐᵒᵖ M] (l : List (tsze R M)) : l.prod.fst = (l.map fst).prod :=",
+      "command_id": "cmd_000145",
+      "target_command_id": "cmd_000145",
+      "target_command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000145",
+      "source_file": "Mathlib/Algebra/TrivSqZeroExt.lean",
+      "source_module": "Mathlib.Algebra.TrivSqZeroExt",
+      "target_kind": "theorem",
+      "original_name": "fst_list_prod",
+      "target_source_span": {
+        "start_byte": 22136,
+        "end_byte": 22426,
+        "start_line": 647,
+        "start_col": 0,
+        "end_line": 649,
+        "end_col": 94
+      },
+      "view": "CMath",
+      "prompt": "def fst (x : tsze R M) : R :=\n  x.1\n\ntheorem anonymous_target [Monoid R] [AddMonoid M] [DistribMulAction R M] [DistribMulAction Rᵐᵒᵖ M]\n    [SMulCommClass R Rᵐᵒᵖ M] (l : List (tsze R M)) : l.prod.fst = (l.map fst).prod :=\n",
+      "target": "map_list_prod ({ toFun := fst, map_one' := fst_one, map_mul' := fst_mul } : tsze R M →* R) _",
+      "context_items": [
+        {
+          "position": 3,
+          "kind": "def",
+          "text": "def fst (x : tsze R M) : R :=\n  x.1",
+          "command_id": "cmd_000012",
+          "command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000012",
+          "source_order": 11,
+          "source_span": {
+            "start_byte": 3043,
+            "end_byte": 3137,
+            "start_line": 86,
+            "start_col": 0,
+            "end_line": 88,
+            "end_col": 5
+          },
+          "parser_kind": "def",
+          "effective_kind": "def",
+          "role": "MC"
+        }
+      ],
+      "context_ids": [
+        "cmd_000012"
+      ],
+      "context_uids": [
+        "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000012"
+      ],
+      "template_version": "training_source_order_context_then_statement_one_newline_v1",
+      "tokenization_status": "raw_unbudgeted_view_see_tokenized_exports",
+      "verified_by_lean": true,
+      "lean_verification_basis": "user_confirmed_prior_Lean_verification_2026-10-13",
+      "lean_verification_scope": "reference_proof_in_complete_original_source_environment"
+    },
+    "CEnv": {
+      "sample_id": "cc1c0999b59e1d4f78e277ee",
+      "target_id": "cc1c0999b59e1d4f78e277ee",
+      "split": "test",
+      "proof_family": "Strict Term",
+      "statement": "theorem anonymous_target [Monoid R] [AddMonoid M] [DistribMulAction R M] [DistribMulAction Rᵐᵒᵖ M]\n    [SMulCommClass R Rᵐᵒᵖ M] (l : List (tsze R M)) : l.prod.fst = (l.map fst).prod :=",
+      "command_id": "cmd_000145",
+      "target_command_id": "cmd_000145",
+      "target_command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000145",
+      "source_file": "Mathlib/Algebra/TrivSqZeroExt.lean",
+      "source_module": "Mathlib.Algebra.TrivSqZeroExt",
+      "target_kind": "theorem",
+      "original_name": "fst_list_prod",
+      "target_source_span": {
+        "start_byte": 22136,
+        "end_byte": 22426,
+        "start_line": 647,
+        "start_col": 0,
+        "end_line": 649,
+        "end_col": 94
+      },
+      "view": "CEnv",
+      "prompt": "universe u v w\n\nlocal notation \"tsze\" => TrivSqZeroExt\n\nnamespace TrivSqZeroExt\n\ntheorem anonymous_target [Monoid R] [AddMonoid M] [DistribMulAction R M] [DistribMulAction Rᵐᵒᵖ M]\n    [SMulCommClass R Rᵐᵒᵖ M] (l : List (tsze R M)) : l.prod.fst = (l.map fst).prod :=\n",
+      "target": "map_list_prod ({ toFun := fst, map_one' := fst_one, map_mul' := fst_mul } : tsze R M →* R) _",
+      "context_items": [
+        {
+          "position": 0,
+          "kind": "universe",
+          "text": "universe u v w",
+          "command_id": "cmd_000002",
+          "command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000002",
+          "source_order": 1,
+          "source_span": {
+            "start_byte": 2279,
+            "end_byte": 2293,
+            "start_line": 53,
+            "start_col": 0,
+            "end_line": 53,
+            "end_col": 14
+          },
+          "parser_kind": "universe",
+          "effective_kind": "universe",
+          "role": "EC"
+        },
+        {
+          "position": 1,
+          "kind": "local_notation",
+          "text": "local notation \"tsze\" => TrivSqZeroExt",
+          "command_id": "cmd_000004",
+          "command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000004",
+          "source_order": 3,
+          "source_span": {
+            "start_byte": 2669,
+            "end_byte": 2707,
+            "start_line": 66,
+            "start_col": 0,
+            "end_line": 66,
+            "end_col": 38
+          },
+          "parser_kind": "local_notation",
+          "effective_kind": "local_notation",
+          "role": "EC"
+        },
+        {
+          "position": 2,
+          "kind": "namespace",
+          "text": "namespace TrivSqZeroExt",
+          "command_id": "cmd_000006",
+          "command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000006",
+          "source_order": 5,
+          "source_span": {
+            "start_byte": 2735,
+            "end_byte": 2758,
+            "start_line": 70,
+            "start_col": 0,
+            "end_line": 70,
+            "end_col": 23
+          },
+          "parser_kind": "namespace",
+          "effective_kind": "namespace",
+          "role": "EC"
+        }
+      ],
+      "context_ids": [
+        "cmd_000002",
+        "cmd_000004",
+        "cmd_000006"
+      ],
+      "context_uids": [
+        "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000002",
+        "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000004",
+        "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000006"
+      ],
+      "template_version": "training_source_order_context_then_statement_one_newline_v1",
+      "tokenization_status": "raw_unbudgeted_view_see_tokenized_exports",
+      "verified_by_lean": true,
+      "lean_verification_basis": "user_confirmed_prior_Lean_verification_2026-10-13",
+      "lean_verification_scope": "reference_proof_in_complete_original_source_environment"
+    },
+    "CFull": {
+      "sample_id": "cc1c0999b59e1d4f78e277ee",
+      "target_id": "cc1c0999b59e1d4f78e277ee",
+      "split": "test",
+      "proof_family": "Strict Term",
+      "statement": "theorem anonymous_target [Monoid R] [AddMonoid M] [DistribMulAction R M] [DistribMulAction Rᵐᵒᵖ M]\n    [SMulCommClass R Rᵐᵒᵖ M] (l : List (tsze R M)) : l.prod.fst = (l.map fst).prod :=",
+      "command_id": "cmd_000145",
+      "target_command_id": "cmd_000145",
+      "target_command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000145",
+      "source_file": "Mathlib/Algebra/TrivSqZeroExt.lean",
+      "source_module": "Mathlib.Algebra.TrivSqZeroExt",
+      "target_kind": "theorem",
+      "original_name": "fst_list_prod",
+      "target_source_span": {
+        "start_byte": 22136,
+        "end_byte": 22426,
+        "start_line": 647,
+        "start_col": 0,
+        "end_line": 649,
+        "end_col": 94
+      },
+      "view": "CFull",
+      "prompt": "universe u v w\n\nlocal notation \"tsze\" => TrivSqZeroExt\n\nnamespace TrivSqZeroExt\n\ndef fst (x : tsze R M) : R :=\n  x.1\n\ntheorem anonymous_target [Monoid R] [AddMonoid M] [DistribMulAction R M] [DistribMulAction Rᵐᵒᵖ M]\n    [SMulCommClass R Rᵐᵒᵖ M] (l : List (tsze R M)) : l.prod.fst = (l.map fst).prod :=\n",
+      "target": "map_list_prod ({ toFun := fst, map_one' := fst_one, map_mul' := fst_mul } : tsze R M →* R) _",
+      "context_items": [
+        {
+          "position": 0,
+          "kind": "universe",
+          "text": "universe u v w",
+          "command_id": "cmd_000002",
+          "command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000002",
+          "source_order": 1,
+          "source_span": {
+            "start_byte": 2279,
+            "end_byte": 2293,
+            "start_line": 53,
+            "start_col": 0,
+            "end_line": 53,
+            "end_col": 14
+          },
+          "parser_kind": "universe",
+          "effective_kind": "universe",
+          "role": "EC"
+        },
+        {
+          "position": 1,
+          "kind": "local_notation",
+          "text": "local notation \"tsze\" => TrivSqZeroExt",
+          "command_id": "cmd_000004",
+          "command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000004",
+          "source_order": 3,
+          "source_span": {
+            "start_byte": 2669,
+            "end_byte": 2707,
+            "start_line": 66,
+            "start_col": 0,
+            "end_line": 66,
+            "end_col": 38
+          },
+          "parser_kind": "local_notation",
+          "effective_kind": "local_notation",
+          "role": "EC"
+        },
+        {
+          "position": 2,
+          "kind": "namespace",
+          "text": "namespace TrivSqZeroExt",
+          "command_id": "cmd_000006",
+          "command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000006",
+          "source_order": 5,
+          "source_span": {
+            "start_byte": 2735,
+            "end_byte": 2758,
+            "start_line": 70,
+            "start_col": 0,
+            "end_line": 70,
+            "end_col": 23
+          },
+          "parser_kind": "namespace",
+          "effective_kind": "namespace",
+          "role": "EC"
+        },
+        {
+          "position": 3,
+          "kind": "def",
+          "text": "def fst (x : tsze R M) : R :=\n  x.1",
+          "command_id": "cmd_000012",
+          "command_uid": "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000012",
+          "source_order": 11,
+          "source_span": {
+            "start_byte": 3043,
+            "end_byte": 3137,
+            "start_line": 86,
+            "start_col": 0,
+            "end_line": 88,
+            "end_col": 5
+          },
+          "parser_kind": "def",
+          "effective_kind": "def",
+          "role": "MC"
+        }
+      ],
+      "context_ids": [
+        "cmd_000002",
+        "cmd_000004",
+        "cmd_000006",
+        "cmd_000012"
+      ],
+      "context_uids": [
+        "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000002",
+        "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000004",
+        "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000006",
+        "Mathlib/Algebra/TrivSqZeroExt.lean::cmd_000012"
+      ],
+      "template_version": "training_source_order_context_then_statement_one_newline_v1",
+      "tokenization_status": "raw_unbudgeted_view_see_tokenized_exports",
+      "verified_by_lean": true,
+      "lean_verification_basis": "user_confirmed_prior_Lean_verification_2026-10-13",
+      "lean_verification_scope": "reference_proof_in_complete_original_source_environment"
+    }
+  }
+}

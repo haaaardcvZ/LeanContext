@@ -1,0 +1,25 @@
+{
+  "schema_version": "leancontext-dataset-quality-v1",
+  "validation_scope": "record_structure_four_view_alignment_and_split_integrity",
+  "records_checked": 129826,
+  "counts_by_split": {
+    "train": 90879,
+    "validation": 19473,
+    "test": 19474
+  },
+  "both_nonempty_by_split": {
+    "train": 51628,
+    "validation": 11063,
+    "test": 11064
+  },
+  "unique_sample_ids": 129826,
+  "unique_source_files": 4469,
+  "schema_and_view_alignment_errors": 0,
+  "empty_statements": 0,
+  "empty_reference_proofs": 0,
+  "duplicate_sample_ids": 0,
+  "normalized_statements_shared_across_splits": 0,
+  "source_files_shared_across_splits": 0,
+  "canonical_records_and_split_assignments_preserved": true,
+  "canonical_sha256": "0254d358216c19add0ce84c501222b8601aeee10da5f817cd0ad16b90d4c3b10"
+}

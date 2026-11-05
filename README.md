@@ -11,6 +11,26 @@ controlled context comparisons.
 
 ![LeanContext overview from Figure 1 of the paper](assets/overview.png)
 
+## Dataset
+
+LeanContext contains **129,826 proof targets** from **4,469 Mathlib source files**,
+with four aligned context views for each target.
+
+**[Download dataset v1.0.0](https://github.com/haaaardcvZ/LeanContext/releases/download/dataset-v1.0.0/LeanContext-dataset-v1.0.0.zip)**
+· [Dataset documentation](dataset/README.md)
+· [Example record](dataset/example.json)
+
+| Split | Targets |
+| --- | ---: |
+| Train | 90,879 |
+| Validation | 19,473 |
+| Test | 19,474 |
+
+The download includes the complete records, source mappings, Mathlib snapshot,
+pinned tokenizers, and supporting analysis subsets. Extract it to obtain
+`leancontext_dataset/`; file checksums and release details are in
+[dataset/release.json](dataset/release.json).
+
 ## Context views
 
 **Mathematical Context (MC)** contains selected complete preceding mathematical
@@ -32,6 +52,7 @@ matched declaration replacement with EC fixed, and dependency-aware selection.
 ## Repository layout
 
 ```text
+dataset/                Dataset documentation, example, and release metadata
 extraction/             Lean command parsing and context selection
 dataset_preparation/    Four-view export, tokenization, and controlled inputs
 lean_proof_training/    LLaDA/Llama-3.1 training and whole-proof evaluation
@@ -56,8 +77,8 @@ require a suitable GPU environment and the corresponding pretrained model.
 
 ## Prepare data
 
-Supply the dataset and tokenizer files separately from this source repository.
-The runtime preparation entry point expects the following input layout:
+Download and extract the dataset above. Its bundled tokenizer resources match
+the model configurations. The runtime preparation entry point expects this layout:
 
 ```text
 leancontext_dataset/
