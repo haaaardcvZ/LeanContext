@@ -1,0 +1,1 @@
+"""Shared, architecture-neutral components."""

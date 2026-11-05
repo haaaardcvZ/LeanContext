@@ -1,0 +1,3 @@
+# Python >= 3.10. All Python modules use the standard library only.
+# No pip package is required for this original extraction pipeline.
+# External: Elan/Lake, Lean v4.14.0-rc1, pinned Mathlib with dependencies/cache.

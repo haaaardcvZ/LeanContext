@@ -1,0 +1,5 @@
+# Exact versions recorded by the real tokenizer creation/audit artifacts.
+transformers==4.41.2
+tokenizers==0.19.1
+numpy>=1.26,<3
+PyYAML>=6.0.2

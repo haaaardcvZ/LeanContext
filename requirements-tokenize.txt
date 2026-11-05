@@ -1,0 +1,4 @@
+# Separate CPU environment to reproduce the real tokenizer audit.
+transformers==4.41.2
+tokenizers==0.19.1
+safetensors>=0.4.5

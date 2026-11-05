@@ -1,0 +1,10 @@
+# Separate inference-only environment for released provers. No benchmark SFT.
+# From lean_proof_training: pip install -r configs/released/requirements.txt
+# Then: pip install --no-deps -e .
+torch==2.6.0
+transformers==4.46.3
+accelerate>=1.1,<2
+tokenizers>=0.20,<0.21
+safetensors>=0.4.5
+pyyaml>=6.0.2
+tqdm>=4.67

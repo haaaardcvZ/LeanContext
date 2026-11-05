@@ -1,0 +1,86 @@
+# Fixed-checkpoint released Lean prover evaluation.
+# Use evaluation.released_models to CPU-prepack the native-tokenizer inputs before running.
+{
+  "seed": 2026,
+  "architecture": "ar",
+  "model": {
+    "name_or_path": "deepseek-ai/DeepSeek-Prover-V1.5-RL",
+    "revision": "40a760138c68038d9869a436077c16b654b1cc72",
+    "tokenizer_name_or_path": "${EVAL_ROOT}/released/deepseek_v15_rl/temperature_0p6/inputs/tokenizer",
+    "tokenizer_revision": "40a760138c68038d9869a436077c16b654b1cc72",
+    "tokenizer_local_files_only": true,
+    "checkpoint": null,
+    "cache_dir": "${MODEL_CACHE}",
+    "dtype": "bfloat16",
+    "trust_remote_code": false,
+    "use_fast_tokenizer": true,
+    "minimum_transformers_version": "4.46.3"
+  },
+  "data": {
+    "test_file": "${DATASET_ROOT}/benchmark/test.jsonl",
+    "tokenized_input_file": "${EVAL_ROOT}/released/deepseek_v15_rl/temperature_0p6/inputs/views/CEnv/test.jsonl",
+    "allowed_ids_file": "${DATASET_ROOT}/evaluation_populations/test_both_nonempty.jsonl"
+  },
+  "source": {
+    "public_spans": true,
+    "command_spans_root": "${DATASET_ROOT}/command_mapping/source_commands",
+    "mathlib_root": "${MATHLIB_ROOT}"
+  },
+  "generation": {
+    "context_view": "CEnv",
+    "input_format": "training_view",
+    "tokenizer_mode": "native",
+    "input_limit": 1024,
+    "max_new_tokens": 1024,
+    "max_sequence_length": 2048,
+    "candidate_batch_size": 1,
+    "sampled": {
+      "num_candidates": 32,
+      "temperature": 0.6,
+      "top_p": 0.95,
+      "top_k": 0
+    },
+    "greedy": {
+      "num_candidates": 1,
+      "temperature": 0
+    },
+    "forbid_reasoning_markers": []
+  },
+  "verification": {
+    "lean_command": "lake env lean",
+    "preflight_import": "Mathlib",
+    "gold_preflight_samples": 8,
+    "jobs": 8,
+    "timeout_seconds": 60,
+    "heartbeat_policy": "source_inherited",
+    "resume": true,
+    "keep_lean_files": false,
+    "keep_failed_lean_files": true
+  },
+  "evaluation": {
+    "max_samples": 0,
+    "require_all_targets": true,
+    "expected_population_size": 11064
+  },
+  "output": {
+    "directory": "${EVAL_ROOT}/released/deepseek_v15_rl/temperature_0p6/CEnv"
+  },
+  "released_evaluation": {
+    "repository": "deepseek-ai/DeepSeek-Prover-V1.5-RL",
+    "revision": "40a760138c68038d9869a436077c16b654b1cc72",
+    "gated": false,
+    "model_alias": "deepseek_v15_rl",
+    "official_model_card": "https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1.5-RL",
+    "official_revision_url": "https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1.5-RL/commit/40a760138c68038d9869a436077c16b654b1cc72",
+    "official_files": "https://huggingface.co/deepseek-ai/DeepSeek-Prover-V1.5-RL/tree/40a760138c68038d9869a436077c16b654b1cc72",
+    "primary_source_check": "2026-10-13; official Hugging Face model cards/tree/commit pages; no weights fetched",
+    "protocol": "leancontext-released-native-tokenizer-plain-completion-1024-v1",
+    "benchmark_training": false,
+    "serializer": "source-ordered plain Lean commands + unchanged statement + newline; native tokenizer special-token postprocessor only",
+    "chat_template_or_extra_instruction_applied": false,
+    "model_card_recommended_prompt_reproduction": false,
+    "protocol_defaults": "controlled_plain_lean_completion",
+    "reasoning_token_accounting": "ALL generated tokens share max_new_tokens1024; no separate reasoning allowance or renewed proof budget",
+    "reasoning_marker_policy": "invalid candidate before proof cleanup when forbidden markers occur"
+  }
+}

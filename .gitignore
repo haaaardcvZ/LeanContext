@@ -1,0 +1,35 @@
+# Python and local environments
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+build/
+dist/
+
+# Local settings and credentials
+.env
+.env.*
+!.env.example
+.DS_Store
+.idea/
+.vscode/
+
+# Data, model weights, and generated runs
+/data/
+/leancontext_dataset/
+/leancontext_runtime/
+/checkpoints/
+/model_cache/
+/evaluation/
+/runs/
+/outputs/
+/lean_proof_training/outputs/
+/extraction/outputs/
+*.pt
+*.pth
+*.safetensors
+*.log

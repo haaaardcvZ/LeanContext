@@ -1,0 +1,173 @@
+LEANCONTEXT EXTRACTION PIPELINE
+==============================
+
+This directory contains the Lean command parser and reference-assisted
+DeepSeek context-matching pipeline. Dataset preparation, tokenization, training,
+and evaluation are separate modules in the parent code package. Credentials
+are read from the environment and are not distributed.
+
+1. Components
+
+theorem_generate/lean_parser/ExtractCommandSpans.lean
+  Parses the header, loads imports, invokes Lean's frontend/elaborator, and
+  exports command syntax spans, IDs, kinds, names, text, and source positions.
+
+theorem_generate/lean_parser/batch_extract_mathlib_command_spans.py
+  Scans Mathlib/**/*.lean, invokes the Lean extractor, normalizes comments and
+  blank lines, and adds effective_raw_text and source-file/module metadata.
+
+theorem_generate/lean_parser/normalize_effective_raw_text.py
+  Standalone normalization utility. Batch extraction already normalizes text.
+
+theorem_generate/extract_data/context_pipeline.py
+  Identifies theorem/lemma/example targets, tracks scopes and preceding
+  declarations, builds structural and lexical candidates, constructs selection
+  prompts, splits statements and proofs, anonymizes target names, and assembles
+  selected commands in source order.
+
+theorem_generate/extract_data/llm_client.py
+  Standard-library HTTP client with JSON requests, timeouts, retries, and
+  response parsing.
+
+theorem_generate/extract_data/build_context_deepseek_hybrid.py
+  Parallel, resumable matching. Candidate sets with at most 30 items use the
+  configured Flash route; larger sets use the configured Pro route.
+
+theorem_generate/extract_data/dedupe_jsonl_by_target.py
+  Deduplicates source_file::target_command_id, keeping the last record by default.
+
+theorem_generate/extract_data/remove_proof_leakage_context.py
+  Optional statement-name filter removing selected theorem/lemma names absent from
+  the statement. It can remove useful resources and does not make matching
+  proof-blind.
+
+theorem_generate/extract_data/repair_sft_target_split.py
+  Reconstructs statement/proof boundaries, including commands whose attributes
+  contain assignment syntax.
+
+theorem_generate/extract_data/classify_proof_surface.py
+  Produces surface-form labels and a reduced schema. Preserve
+  repaired records for command mappings; surface output is not a substitute
+  for complete records or the benchmark's four mutually exclusive categories.
+
+theorem_generate/extract_data/select_validation_files.py
+  Chooses API smoke-test files by candidate count; this is not a dataset split.
+
+2. Environment
+
+Python 3.10 or newer. Extraction Python modules use the standard library.
+Lean toolchain: leanprover/lean4:v4.14.0-rc1
+Mathlib tag: v4.14.0-rc1
+Mathlib commit: a7fc949f1b05c2a01e01c027fd9f480496a1253e
+
+With Elan and Lake installed, create a separate pinned Mathlib checkout:
+
+  git clone --branch v4.14.0-rc1 --depth 1 https://github.com/leanprover-community/mathlib4.git mathlib4-4.14.0-rc1
+  cd mathlib4-4.14.0-rc1
+  git rev-parse HEAD
+  elan toolchain install leanprover/lean4:v4.14.0-rc1
+  lake exe cache get
+  lake env lean --version
+
+Check that HEAD equals the commit above. Do not update the dependency lockfile
+with lake update. If the binary cache is unavailable, run lake build Mathlib.
+The code release does not include compiled Mathlib dependencies.
+
+3. Execution
+
+Run commands from this extraction/ directory. Replace the paths below with
+local directories. Outputs are separate; original Lean files are not modified.
+
+Check the environment without downloads or API calls:
+
+  python3 check_environment.py --mathlib-root /path/to/mathlib4-4.14.0-rc1
+
+This checks toolchain and checkout identity when a standalone Git checkout is
+available; it is not a per-file proof-validation run.
+
+Parse one file:
+
+  python3 run_pipeline.py parse --mathlib-root /path/to/mathlib4-4.14.0-rc1 --work-dir outputs --path-include Mathlib/Algebra/TrivSqZeroExt.lean --jobs 1
+
+Parse Mathlib, skipping existing outputs:
+
+  python3 run_pipeline.py parse --mathlib-root /path/to/mathlib4-4.14.0-rc1 --work-dir outputs --jobs 4 --timeout 300
+
+Command records: outputs/command_spans_jsonl/Mathlib/**/*.jsonl
+Logs: outputs/command_spans_jsonl/_logs/
+Manifest: outputs/command_spans_jsonl/_manifest.json
+
+--include-archive additionally scans Archive/ and Counterexamples/; it changes
+the scan scope and is not part of standard benchmark extraction. The wrapper
+checks the batch manifest and fails if any files failed.
+
+Preview the first 50 targets without an API call:
+
+  python3 run_pipeline.py candidates --work-dir outputs --limit 50
+
+Use an existing parser export:
+
+  python3 run_pipeline.py candidates --work-dir outputs --parser-root /path/to/command_spans_jsonl/Mathlib --limit 50
+
+For API matching, set DEEPSEEK_API_KEY outside the source tree. Models and the
+endpoint are configurable through --flash-model, --pro-model, --base-url, or
+the corresponding DEEPSEEK_* environment variables. Routing labels
+are not immutable backend identifiers. Supply exact IDs supported by the API.
+
+Match a small set:
+
+  python3 run_pipeline.py match --work-dir outputs --limit 20 --call-api --workers 1 --flash-model FLASH_MODEL_ID --pro-model PRO_MODEL_ID
+
+Match all targets, or resume an existing run:
+
+  python3 run_pipeline.py match --work-dir outputs --all-targets --call-api --workers 4 --resume --flash-model FLASH_MODEL_ID --pro-model PRO_MODEL_ID
+
+--parser-root is also supported for matching. --call-api explicitly enables
+paid requests; --limit or --all-targets specifies the processed corpus size.
+Resume retains old failure logs but excludes subsequently successful target
+IDs from unresolved failures.
+
+Defaults: temperature=0, recursive-depth=2, max-dependency-candidates=60,
+max-chars-per-command=5000, pro-threshold=30, timeout=120, max-retries=3.
+Command and target limits are characters, not tokens; target text is limited
+to 10000 characters. Requests do not specify max_tokens.
+
+Selected records: outputs/selected.raw.jsonl
+Failed requests: outputs/selected.raw.jsonl.failed.jsonl
+
+Deduplicate, repair, and classify without reselecting context:
+
+  python3 run_pipeline.py postprocess --work-dir outputs
+
+Apply the optional statement-name filter:
+
+  python3 run_pipeline.py postprocess --work-dir outputs --historical-statement-filter
+
+The filter is disabled by default. Add --force to overwrite existing outputs.
+
+Outputs:
+  selected.deduplicated.jsonl       Complete deduplicated records.
+  selected.statement_context.jsonl Records after the optional statement-name filter.
+  selected.repaired.jsonl          Complete target/proof/context/command-ID records.
+  selected.surface.jsonl           Reduced historical surface-form labels.
+
+4. Offline tests
+
+  python3 -m unittest discover -s tests -v
+
+Tests cover parsing, normalization, splitting, selection, and wrapper logic.
+Fixtures are not experimental outcomes; no test calls the API.
+
+5. Protocol details
+
+The original matching prompt includes the reference proof in target.text;
+matching is reference-assisted, not statement-only or proof-blind. Structural
+commands are candidates rather than unconditionally retained items.
+
+Extraction invokes the frontend/elaborator but does not itself certify a
+target proof or a cropped context. Intermediate matching records retain their
+own validation state; final benchmark verification provenance is separate.
+
+Command IDs are file-local; combine them with source_file for unique identity.
+Source replacement uses original start_byte/end_byte, not normalized
+effective_end_byte.

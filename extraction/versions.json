@@ -1,0 +1,12 @@
+{
+  "python_minimum": "3.10",
+  "lean_toolchain": "leanprover/lean4:v4.14.0-rc1",
+  "mathlib_tag": "v4.14.0-rc1",
+  "mathlib_commit": "a7fc949f1b05c2a01e01c027fd9f480496a1253e",
+  "mathlib_remote": "https://github.com/leanprover-community/mathlib4.git",
+  "api_model_strings_from_original_code": {
+    "flash": "deepseek-v4-flash",
+    "pro": "deepseek-v4-pro"
+  },
+  "model_names_are_not_immutable_backend_version_evidence": true
+}

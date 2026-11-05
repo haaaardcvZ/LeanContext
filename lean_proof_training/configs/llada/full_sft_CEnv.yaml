@@ -1,0 +1,20 @@
+# LEANCONTEXT training configuration.
+extends: ../base.yaml
+model:
+  name_or_path: GSAI-ML/LLaDA-8B-Base
+  revision: 0f2787f2d87eac5eed8a087d5ecd24277e6255b2
+  tokenizer_name_or_path: ${DATASET_ROOT}/tokenizers/llada
+  cache_dir: ${MODEL_CACHE}
+  dtype: bfloat16
+  trust_remote_code: true
+  use_fast_tokenizer: true
+  gradient_checkpointing: true
+data:
+  mode: single
+  tokenized_root: ${DATASET_ROOT}/tokenized/llada
+  train_file: ${DATASET_ROOT}/tokenized/llada/training/input_1024/views/CEnv/train.jsonl
+  validation_file: ${DATASET_ROOT}/tokenized/llada/training/input_1024/views/CEnv/validation.jsonl
+  expected_train_samples: 90713
+loss:
+  mask_token_id: 126336
+output_dir: ${CHECKPOINT_ROOT}/llada/full_sft_CEnv

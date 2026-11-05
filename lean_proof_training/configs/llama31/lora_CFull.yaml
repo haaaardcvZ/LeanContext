@@ -1,0 +1,11 @@
+# CFull LoRA adaptation configuration.
+extends: ./full_sft_CFull.yaml
+training:
+  learning_rate: 0.0001
+tuning:
+  mode: lora
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj]
+output_dir: ${CHECKPOINT_ROOT}/llama31/lora_CFull

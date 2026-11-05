@@ -1,0 +1,30 @@
+# LEANCONTEXT training configuration.
+seed: 2026
+training:
+  fresh_start: true
+  mixed_precision: bf16
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 2
+  learning_rate: 0.00002
+  weight_decay: 0.01
+  adam_beta1: 0.9
+  adam_beta2: 0.95
+  adam_epsilon: 1.0e-8
+  warmup_ratio: 0.03
+  max_grad_norm: 1.0
+  num_workers: 4
+  pad_to_multiple_of: 8
+  fused_optimizer: true
+  save_every_epochs: 2
+  epochs: 8
+distributed:
+  strategy: ddp
+  expected_processes: 16
+  timeout_seconds: 7200
+  find_unused_parameters: false
+tuning:
+  mode: full
+loss:
+  eval_mask_ratio: 0.5
+  eval_mask_seed: 2026

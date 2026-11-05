@@ -1,0 +1,175 @@
+{
+  "schema_version": "leancontext-experiments-v1",
+  "configurations": [
+    {
+      "path": "lean_proof_training/configs/base.yaml",
+      "group": "training",
+      "runnable": false,
+      "description": "Shared training defaults inherited by backbone-specific configurations."
+    },
+    {
+      "path": "lean_proof_training/configs/evaluation/llada_C0.yaml",
+      "group": "evaluation"
+    },
+    {
+      "path": "lean_proof_training/configs/evaluation/llada_CEnv.yaml",
+      "group": "evaluation"
+    },
+    {
+      "path": "lean_proof_training/configs/evaluation/llada_CFull.yaml",
+      "group": "evaluation"
+    },
+    {
+      "path": "lean_proof_training/configs/evaluation/llada_CMath.yaml",
+      "group": "evaluation"
+    },
+    {
+      "path": "lean_proof_training/configs/evaluation/llama31_C0.yaml",
+      "group": "evaluation"
+    },
+    {
+      "path": "lean_proof_training/configs/evaluation/llama31_CEnv.yaml",
+      "group": "evaluation"
+    },
+    {
+      "path": "lean_proof_training/configs/evaluation/llama31_CFull.yaml",
+      "group": "evaluation"
+    },
+    {
+      "path": "lean_proof_training/configs/evaluation/llama31_CMath.yaml",
+      "group": "evaluation"
+    },
+    {
+      "path": "lean_proof_training/configs/llada/full_sft_C0.yaml",
+      "group": "training"
+    },
+    {
+      "path": "lean_proof_training/configs/llada/full_sft_CEnv.yaml",
+      "group": "training"
+    },
+    {
+      "path": "lean_proof_training/configs/llada/full_sft_CFull.yaml",
+      "group": "training"
+    },
+    {
+      "path": "lean_proof_training/configs/llada/full_sft_CMath.yaml",
+      "group": "training"
+    },
+    {
+      "path": "lean_proof_training/configs/llada/lora_CFull.yaml",
+      "group": "training"
+    },
+    {
+      "path": "lean_proof_training/configs/llama31/full_sft_C0.yaml",
+      "group": "training"
+    },
+    {
+      "path": "lean_proof_training/configs/llama31/full_sft_CEnv.yaml",
+      "group": "training"
+    },
+    {
+      "path": "lean_proof_training/configs/llama31/full_sft_CFull.yaml",
+      "group": "training"
+    },
+    {
+      "path": "lean_proof_training/configs/llama31/full_sft_CMath.yaml",
+      "group": "training"
+    },
+    {
+      "path": "lean_proof_training/configs/llama31/lora_CFull.yaml",
+      "group": "training"
+    },
+    {
+      "path": "lean_proof_training/configs/released/deepseek_v15_rl_C0.yaml",
+      "group": "released"
+    },
+    {
+      "path": "lean_proof_training/configs/released/deepseek_v15_rl_CEnv.yaml",
+      "group": "released"
+    },
+    {
+      "path": "lean_proof_training/configs/released/deepseek_v15_rl_CFull.yaml",
+      "group": "released"
+    },
+    {
+      "path": "lean_proof_training/configs/released/deepseek_v15_rl_CMath.yaml",
+      "group": "released"
+    },
+    {
+      "path": "lean_proof_training/configs/released/deepseek_v15_sft_C0.yaml",
+      "group": "released"
+    },
+    {
+      "path": "lean_proof_training/configs/released/deepseek_v15_sft_CEnv.yaml",
+      "group": "released"
+    },
+    {
+      "path": "lean_proof_training/configs/released/deepseek_v15_sft_CFull.yaml",
+      "group": "released"
+    },
+    {
+      "path": "lean_proof_training/configs/released/deepseek_v15_sft_CMath.yaml",
+      "group": "released"
+    },
+    {
+      "path": "lean_proof_training/configs/released/deepseek_v2_7b_C0.yaml",
+      "group": "released"
+    },
+    {
+      "path": "lean_proof_training/configs/released/deepseek_v2_7b_CEnv.yaml",
+      "group": "released"
+    },
+    {
+      "path": "lean_proof_training/configs/released/deepseek_v2_7b_CFull.yaml",
+      "group": "released"
+    },
+    {
+      "path": "lean_proof_training/configs/released/deepseek_v2_7b_CMath.yaml",
+      "group": "released"
+    },
+    {
+      "path": "lean_proof_training/configs/released/goedel_sft_C0.yaml",
+      "group": "released"
+    },
+    {
+      "path": "lean_proof_training/configs/released/goedel_sft_CEnv.yaml",
+      "group": "released"
+    },
+    {
+      "path": "lean_proof_training/configs/released/goedel_sft_CFull.yaml",
+      "group": "released"
+    },
+    {
+      "path": "lean_proof_training/configs/released/goedel_sft_CMath.yaml",
+      "group": "released"
+    },
+    {
+      "path": "lean_proof_training/configs/released/theoremllama_C0.yaml",
+      "group": "released"
+    },
+    {
+      "path": "lean_proof_training/configs/released/theoremllama_CEnv.yaml",
+      "group": "released"
+    },
+    {
+      "path": "lean_proof_training/configs/released/theoremllama_CFull.yaml",
+      "group": "released"
+    },
+    {
+      "path": "lean_proof_training/configs/released/theoremllama_CMath.yaml",
+      "group": "released"
+    }
+  ],
+  "training_backbones": [
+    "GSAI-ML/LLaDA-8B-Base",
+    "meta-llama/Llama-3.1-8B"
+  ],
+  "input_limit": 1024,
+  "complete_proof_plus_one_EOS_limit": 1024,
+  "sampled_candidates": 32,
+  "sampled_temperature": 0.6,
+  "greedy_candidates": 1,
+  "training_epochs": 8,
+  "checkpoint_every_epochs": 2,
+  "distributed_strategy": "ddp"
+}

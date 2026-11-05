@@ -1,0 +1,20 @@
+# LEANCONTEXT training configuration.
+extends: ../base.yaml
+model:
+  name_or_path: meta-llama/Llama-3.1-8B
+  revision: d04e592bb4f6aa9cfee91e2e20afa771667e1d4b
+  tokenizer_name_or_path: ${DATASET_ROOT}/tokenizers/llama31
+  cache_dir: ${MODEL_CACHE}
+  dtype: bfloat16
+  trust_remote_code: false
+  use_fast_tokenizer: true
+  gradient_checkpointing: true
+data:
+  mode: single
+  tokenized_root: ${DATASET_ROOT}/tokenized/llama31
+  train_file: ${DATASET_ROOT}/tokenized/llama31/training/input_1024/views/CFull/train.jsonl
+  validation_file: ${DATASET_ROOT}/tokenized/llama31/training/input_1024/views/CFull/validation.jsonl
+  expected_train_samples: 90742
+loss:
+  mask_token_id: null
+output_dir: ${CHECKPOINT_ROOT}/llama31/full_sft_CFull
