@@ -2,7 +2,6 @@
 
 **LeanContext: Disentangling Mathematical Resources from Local Formal Context in Lean Whole-Proof Generation**
 
-> **Paper status:** Submitted to **NAACL 2027** · **Under Review**
 
 Companion framework for studying how mathematical declarations and local source
 commands affect Lean whole-proof generation. The code covers context extraction,
